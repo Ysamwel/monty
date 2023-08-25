@@ -1,12 +1,28 @@
 #include "monty.h"
 /**
- * f_stack - Sets the stack mode for pushing elements.
- * @head: Double pointer to the head of the stack.
- * @counter: Line number of the instruction being executed.
- *
- * Return: none
+ * free_stack - that free a doubly link list
+ * @head: head pointer to the double linked list
+ * Return: nothing after freeing the stack
  */
+void free_stack(stack_t *head)
+{
+	stack_t *temp;
 
+	temp = head;
+	while (head)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
+}
+
+/**
+ * f_stack - that prints the top element in the stack
+ * @head: head of stack
+ * @counter: line counter
+ * Return: nothing
+ */
 void f_stack(stack_t **head, unsigned int counter)
 {
 	(void)head;

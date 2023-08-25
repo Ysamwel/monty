@@ -1,10 +1,10 @@
 #include "monty.h"
+
 /**
- * f_pstr - Prints the string starting at the top of the stack.
- * @head: Double pointer to the head of the stack.
- * @counter: Line number of the instruction being executed.
- *
- * Return: none
+ * f_pstr - function that displays the str starting at the top of the stack
+ * @head: head of stack at the top
+ * @counter: line counter
+ * Return: Nothing
  */
 void f_pstr(stack_t **head, unsigned int counter)
 {

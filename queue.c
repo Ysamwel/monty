@@ -1,10 +1,11 @@
 #include "monty.h"
+
 /**
- * f_queue - Sets the queue mode (FIFO).
- * @head: Pointer to the head of the stack.
- * @counter: Line counter.
+ * f_queue - function that displays the top of the queue
+ * @head: head the of queue
+ * @counter: line counter
  *
- * Return: No return value.
+ * Return: Nothing
  */
 void f_queue(stack_t **head, unsigned int counter)
 {
@@ -14,17 +15,16 @@ void f_queue(stack_t **head, unsigned int counter)
 }
 
 /**
- * addqueue - Adds a new node at the end of the stack (FIFO).
- * @head: Pointer to the head of the stack.
- * @n: Value of the new node.
- *
- * Return: No return value.
+ * addqueue - does addition of nodesto the tail queue
+ * @n: new value to be added
+ * @head: head of the queue
+ * Return: Nothing
  */
 void addqueue(stack_t **head, int n)
 {
-	stack_t *new_node, *aux;
+	stack_t *new_node, *temp;
 
-	aux = *head;
+	temp = *head;
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
@@ -32,19 +32,19 @@ void addqueue(stack_t **head, int n)
 	}
 	new_node->n = n;
 	new_node->next = NULL;
-	if (aux)
+	if (temp)
 	{
-		while (aux->next)
-			aux = aux->next;
+		while (temp->next)
+			temp = temp->next;
 	}
-	if (!aux)
+	if (!temp)
 	{
 		*head = new_node;
 		new_node->prev = NULL;
 	}
 	else
 	{
-		aux->next = new_node;
-		new_node->prev = aux;
+		temp->next = new_node;
+		new_node->prev = temp;
 	}
 }
