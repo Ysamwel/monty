@@ -1,14 +1,14 @@
 #include "monty.h"
+
 /**
- * f_push - Pushes an element onto the stack or queue.
- * @head: Double pointer to the head of the stack or queue.
- * @counter: Line number where the push operation is being executed.
- *
+ * f_push - function that adds node to the stack at the top
+ * @head: double linked list head pointer to the stack
+ * @counter: line counter
  * Return: nothing
  */
 void f_push(stack_t **head, unsigned int counter)
 {
-	int n, j = 0, flag = 0;
+	int i, j = 0, flag = 0;
 
 	if (bus.arg)
 	{
@@ -17,30 +17,22 @@ void f_push(stack_t **head, unsigned int counter)
 		for (; bus.arg[j] != '\0'; j++)
 		{
 			if (bus.arg[j] > 57 || bus.arg[j] < 48)
-				flag = 1;
-		}
+				flag = 1; }
 		if (flag == 1)
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", counter);
+		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
 			fclose(bus.file);
 			free(bus.content);
 			free_stack(*head);
-			exit(EXIT_FAILURE);
-		}
-	}
+			exit(EXIT_FAILURE); }}
 	else
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", counter);
+	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);
-		exit(EXIT_FAILURE);
-	}
-
-	n = atoi(bus.arg);
-
+		exit(EXIT_FAILURE); }
+	i = atoi(bus.arg);
 	if (bus.lifi == 0)
-		addnode(head, n);
+		addnode(head, i);
 	else
-		addqueue(head, n);
+		addqueue(head, i);
 }
